@@ -26,7 +26,7 @@ if (!empty($_POST)) {
 ?>
 <div id="ra-contact-container">
 	<!-- Minimal Bootstrap classes are added in case theme uses it -->
-	<h1 class="text-center">Contact us</h1> <!-- make into custom field in admin? -->
+	<h1 class="text-center"><?= esc_attr( get_option('header_text') ); ?></h1> <!-- set in admin or use default -->
 	
 	<div id="ra-contact-success-message">
 		<?= $msg; ?>
