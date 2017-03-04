@@ -1,0 +1,43 @@
+#ra-contact-container{
+	/* background-color:rgba(197,136,164,0.84); */
+	background-color:rgba(220,220,220,0.84);
+	text-align: center;
+	padding: 20px;
+}
+
+#ra-contact-container h1{
+    margin-bottom: 5px;
+}
+
+#ra-contact-container label{
+	display: none;
+}
+
+#ra-contact-container input{
+	width: 80%;
+	display: inline;
+	margin: 20px 0;
+}
+
+#ra-contact-container textarea{
+	width: 80%;
+	display: inline;
+	margin: 20px 0;
+	resize: none;
+}
+
+.ra-contact-required{
+	margin-left: 3px;
+	font-size: 2em;
+	color: red;
+	vertical-align: top;
+}
+
+.ra-contact-not-required{
+	visibility: hidden;
+	margin-left: 3px;
+	font-size: 2em;
+	color: red;
+	vertical-align: top;
+}
+
