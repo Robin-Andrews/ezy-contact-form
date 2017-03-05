@@ -24,3 +24,8 @@ Settings added for color and text
 naming conventions for functions and paths etc.
 Testing
 ajax implementations for buttons
+
+
+add font colors to options
+
+redo buttons

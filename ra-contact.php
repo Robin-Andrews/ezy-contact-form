@@ -27,6 +27,12 @@ wp_register_style('ra-contact-style', MY_PLUGIN_URL .'css/style.css', array(), '
 // load the stylesheet
 wp_enqueue_style('ra-contact-style');
 
+// Register js with jquery as dependency
+wp_register_script('ecf_script', MY_PLUGIN_URL .'js/ecf-script.js', array('jquery'), null, true);
+
+// load js
+wp_enqueue_script('ecf_script');
+
 // Admin page
 include MY_PLUGIN_PATH . "admin.php";
 

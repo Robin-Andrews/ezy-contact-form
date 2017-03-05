@@ -4,6 +4,7 @@ function ecf_restore_defaults(){
 	update_option('header_text', 'Contact us');
 	update_option('user_message', 'Please enter your details');
 	update_option('success_message', 'Thank you, your message has been sent');
+	update_option('bg_color', '#dcdcdc');
 }
 
 // On activation

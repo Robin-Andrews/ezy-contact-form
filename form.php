@@ -1,5 +1,6 @@
 <?php
 // reset data on first arrival
+$sent = false;
 $data = Array();
 $msg = 'Please enter your details'; // stores user message
 
@@ -19,17 +20,18 @@ if (!empty($_POST)) {
 	file_put_contents($file, $csv, FILE_APPEND);
 	
 	// set thank-you message and reset input variables
-	$msg = '<span style=\"color: #1E9600;\">' . esc_attr( get_option('success_message') ) . '</span>';
+	$success_msg = '<span style="color: #1E9600;">' . esc_attr( get_option('success_message') ) . '</span>';
+	$sent = true;
 	$data = Array();
 }
 
 ?>
-<div id="ra-contact-container">
+<div id="ra-contact-container" style="background-color: <?= esc_attr( get_option('bg_color') ); ?>; opacity: 0.84">
 	<!-- Minimal Bootstrap classes are added in case theme uses it -->
 	<h1 class="text-center"><?= esc_attr( get_option('header_text') ); ?></h1> <!-- set in admin or use default -->
 	
 	<div id="ra-contact-success-message">
-		<?= esc_attr( get_option('user_message') ) ?>
+		<?= $sent == true? $success_msg : esc_attr( get_option('user_message') ) ?>
 	</div><!-- ra-contact-success-message -->	
 	
 	<form action="<?= esc_url( $_SERVER['REQUEST_URI'] );?>" method="post" role="form">
