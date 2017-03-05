@@ -5,12 +5,11 @@ function ecf_restore_defaults(){
 	update_option('user_message', 'Please enter your details');
 	update_option('success_message', 'Thank you, your message has been sent');
 	update_option('bg_color', '#dcdcdc');
+	update_option('font_color', '#333333');
+	update_option('success_message_color', '#1E9600');
 }
 
-// On activation
-function plugin_activated()
-{
-	// restore default settings
+function myplugin_activate() {
 	ecf_restore_defaults();
 }
 

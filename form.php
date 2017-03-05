@@ -2,7 +2,7 @@
 // reset data on first arrival
 $sent = false;
 $data = Array();
-$msg = 'Please enter your details'; // stores user message
+$msg = '<span style="color: ' . esc_attr( get_option('font_color') ) . '">' . esc_attr( get_option('user_message') ) . '</span>';
 
 // check if form is posted
 if (!empty($_POST)) {
@@ -20,7 +20,7 @@ if (!empty($_POST)) {
 	file_put_contents($file, $csv, FILE_APPEND);
 	
 	// set thank-you message and reset input variables
-	$success_msg = '<span style="color: #1E9600;">' . esc_attr( get_option('success_message') ) . '</span>';
+	$msg = '<span style="color: ' . esc_attr( get_option('success_message_color') ) . '">' . esc_attr( get_option('success_message') ) . '</span>';
 	$sent = true;
 	$data = Array();
 }
@@ -28,10 +28,10 @@ if (!empty($_POST)) {
 ?>
 <div id="ra-contact-container" style="background-color: <?= esc_attr( get_option('bg_color') ); ?>; opacity: 0.84">
 	<!-- Minimal Bootstrap classes are added in case theme uses it -->
-	<h1 class="text-center"><?= esc_attr( get_option('header_text') ); ?></h1> <!-- set in admin or use default -->
+	<h1 class="text-center"><?= esc_attr( get_option('header_text') ); ?></h1>
 	
 	<div id="ra-contact-success-message">
-		<?= $sent == true? $success_msg : esc_attr( get_option('user_message') ) ?>
+		<?= $msg ?>
 	</div><!-- ra-contact-success-message -->	
 	
 	<form action="<?= esc_url( $_SERVER['REQUEST_URI'] );?>" method="post" role="form">

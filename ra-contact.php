@@ -15,8 +15,7 @@ defined( 'MY_PLUGIN_PATH' ) || define( 'MY_PLUGIN_PATH', plugin_dir_path(__FILE_
 // include functions file
 include MY_PLUGIN_PATH . "functions.php";
 
-// Activation hook
-register_activation_hook( MY_PLUGIN_PATH, "plugin_activated");
+register_activation_hook(__FILE__, 'myplugin_activate' );
 
 // register shortcode
 add_shortcode('ra-contact', 'ra_contact_shortcode');
@@ -32,6 +31,12 @@ wp_register_script('ecf_script', MY_PLUGIN_URL .'js/ecf-script.js', array('jquer
 
 // load js
 wp_enqueue_script('ecf_script');
+
+// Make constants available to JS
+wp_localize_script( 'ecf_script', 'php_vars', array(
+	'MY_PLUGIN_URL' => MY_PLUGIN_URL,
+	'MY_PLUGIN_PATH' => MY_PLUGIN_PATH
+) );
 
 // Admin page
 include MY_PLUGIN_PATH . "admin.php";

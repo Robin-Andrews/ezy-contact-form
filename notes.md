@@ -29,3 +29,9 @@ ajax implementations for buttons
 add font colors to options
 
 redo buttons
+
+validation of contact form?!
+
+Needs refactoring
+
+remove table markup on admin page
