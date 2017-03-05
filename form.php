@@ -19,7 +19,7 @@ if (!empty($_POST)) {
 	file_put_contents($file, $csv, FILE_APPEND);
 	
 	// set thank-you message and reset input variables
-	$msg = '<span style="color: #1E9600;">Thank you, your message has been sent</span>';
+	$msg = '<span style=\"color: #1E9600;\">' . esc_attr( get_option('success_message') ) . '</span>';
 	$data = Array();
 }
 
@@ -29,7 +29,7 @@ if (!empty($_POST)) {
 	<h1 class="text-center"><?= esc_attr( get_option('header_text') ); ?></h1> <!-- set in admin or use default -->
 	
 	<div id="ra-contact-success-message">
-		<?= $msg; ?>
+		<?= esc_attr( get_option('user_message') ) ?>
 	</div><!-- ra-contact-success-message -->	
 	
 	<form action="<?= esc_url( $_SERVER['REQUEST_URI'] );?>" method="post" role="form">

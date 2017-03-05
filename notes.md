@@ -15,3 +15,12 @@ Add download csv functionality
 rationalise constant/variable/function names e.g. ecf_
 
 admin reset button field names
+
+OOP?
+
+#Priorities
+CSV management
+Settings added for color and text
+naming conventions for functions and paths etc.
+Testing
+ajax implementations for buttons
