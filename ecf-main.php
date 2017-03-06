@@ -12,8 +12,8 @@ Version: 1.0
 defined( 'ECF_PLUGIN_URL' ) || define( 'ECF_PLUGIN_URL', plugin_dir_url(__FILE__) );
 defined( 'ECF_PLUGIN_PATH' ) || define( 'ECF_PLUGIN_PATH', plugin_dir_path(__FILE__) );
 defined( 'ECF_PATH_TO_CSV' ) || define( 'ECF_PATH_TO_CSV', ECF_PLUGIN_PATH . '/data/contacts.csv' );
-defined( 'ECF_CSV_URL' ) || define( 'ECF_CSV_URL', ECF_PLUGIN_URL . '/data/contacts.csv' );
-defined( 'ECF_CSV_PATH' ) || define( 'ECF_CSV_PATH', ECF_PLUGIN_PATH . '/data/contacts.csv' );
+defined( 'ECF_CSV_URL' ) || define( 'ECF_CSV_URL', ECF_PLUGIN_URL . 'data/contacts.csv' );
+defined( 'ECF_CSV_PATH' ) || define( 'ECF_CSV_PATH', ECF_PLUGIN_PATH . 'data/contacts.csv' );
 
 // Include functions file
 include ECF_PLUGIN_PATH . "functions.php";

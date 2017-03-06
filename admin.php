@@ -87,7 +87,7 @@ function ecf_admin_page_callback(){
 	
 	<!-- Download contacts button begins -->
 	<div id="ecf-download-button">
-		<a href="<?= ECF_PLUGIN_URL . '/data/contacts.csv';?>" target="_blank">
+		<a href="<?= ECF_CSV_URL ?>" target="_blank">
 		<?php submit_button('Download contacts');?>
 		</a>
 	</div>
