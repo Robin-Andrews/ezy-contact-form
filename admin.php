@@ -1,9 +1,10 @@
 <?php
-
+// Create admin menu
 add_action('admin_menu', function() {
-  add_options_page( 'Easy Contact Form Settings Page', 'Easy Contact Form', 'manage_options', 'easy-contact-form', 'ecf_admin_page_callback' );
+  add_options_page( 'Ezy Contact Form Settings Page', 'Ezy Contact Form', 'manage_options', 'ezy-contact-form', 'ecf_admin_page_callback' );
 });
 
+// Register settings
 add_action( 'admin_init', function() {
     register_setting( 'ecf_plugin_settings', 'header_text' );
     register_setting( 'ecf_plugin_settings', 'user_message' );
@@ -13,12 +14,15 @@ add_action( 'admin_init', function() {
     register_setting( 'ecf_plugin_settings', 'success_message_color' );
 });
 
+// Display admin page
 function ecf_admin_page_callback(){
 ?>
 <!-- Admin settings markup -->
 <div class="wrap">
 	<h1>Welcome to Ezy Contact Form</h1>
 	<p>Please adjust your settings here, or simply use the defaults.</P>
+	
+	<!-- Options section -->
 	<form action="options.php" method="post">
 
 		<?php
@@ -65,7 +69,7 @@ function ecf_admin_page_callback(){
 
 	</form>
 		
-	<!-- Reset button begins -->
+	<!-- Reset defaults button begins -->
 	<?php
 	// Check whether the restore button has been pressed AND also check the nonce
 	if (isset($_POST['reset_button']) && check_admin_referer('reset_button_clicked')) {
@@ -73,17 +77,17 @@ function ecf_admin_page_callback(){
 		reset_button_action();
 	}?>
 	
-	<form action="options-general.php?page=easy-contact-form" method="post">
+	<form action="options-general.php?page=ezy-contact-form" method="post">
 	<?php  wp_nonce_field('reset_button_clicked');?>
 	<input type="hidden" value="true" name="reset_button" />
 	<?php submit_button('Restore defaults');?>
 	</form>
 	
-	<!-- Reset button ends -->
+	<!-- Reset defaults button ends -->
 	
 	<!-- Download contacts button begins -->
 	<div id="ecf-download-button">
-		<a href="<?= MY_PLUGIN_URL . '/data/contacts.csv';?>" target="_blank">
+		<a href="<?= ECF_PLUGIN_URL . '/data/contacts.csv';?>" target="_blank">
 		<?php submit_button('Download contacts');?>
 		</a>
 	</div>
@@ -99,6 +103,23 @@ function ecf_admin_page_callback(){
 	<div id="ecf-view-contacts-field"></div>
 	
 	<!-- View contacts section ends -->
+
+	<!-- Reset CSV button begins -->
+	<?php
+	// Check whether the restore button has been pressed AND also check the nonce
+	if (isset($_POST['reset_csv_button']) && check_admin_referer('reset_csv_button_clicked')) {
+		// the button has been pressed AND we've passed the security check
+		reset_csv();
+	}?>
+	
+	<form action="options-general.php?page=ezy-contact-form" method="post">
+	<?php  wp_nonce_field('reset_csv_button_clicked');?>
+	<h3>Warning - use with caution!<h3>
+	<input type="hidden" value="true" name="reset_csv_button" />
+	<?php submit_button('Reset CSV');?>
+	</form>
+	
+	<!-- Reset CSV button ends -->
 		
 	</div><!-- wrap -->
 <?php

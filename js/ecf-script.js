@@ -1,14 +1,14 @@
 (function($) {
+// Prevent caching so latest resutlts show
+$.ajaxSetup({ cache: false });
 
-var file = php_vars.MY_PLUGIN_URL + 'data/contacts.csv';
-php_vars.MY_PLUGIN_URL
+// Path th CSV using WP Localization
+var file = php_vars.ECF_CSV_URL;
 
-$('#ecf-view-contacts-field').css('display', 'none');
-$('#ecf-view-contacts-field').load(file);
-	
+// Toggle showing CSV contents
 $('#ecf-view-contacts-button').on('click', function(e){
+	$('#ecf-view-contacts-field').load(file);
 	$('#ecf-view-contacts-field').toggle();
 });
 	
 })( jQuery );
-

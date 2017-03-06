@@ -16,8 +16,7 @@ if (!empty($_POST)) {
 	
 	// Write to CSV file;
 	$csv = rtrim(implode($data, ','), ',') . PHP_EOL;
-	$file = MY_PLUGIN_PATH . "/data/contacts.csv";
-	file_put_contents($file, $csv, FILE_APPEND);
+	file_put_contents(ECF_CSV_PATH, $csv, FILE_APPEND);
 	
 	// set thank-you message and reset input variables
 	$msg = '<span style="color: ' . esc_attr( get_option('success_message_color') ) . '">' . esc_attr( get_option('success_message') ) . '</span>';
@@ -26,13 +25,13 @@ if (!empty($_POST)) {
 }
 
 ?>
-<div id="ra-contact-container" style="background-color: <?= esc_attr( get_option('bg_color') ); ?>; opacity: 0.84">
+<div id="ecf-container" style="background-color: <?= esc_attr( get_option('bg_color') ); ?>; opacity: 0.84">
 	<!-- Minimal Bootstrap classes are added in case theme uses it -->
 	<h1 class="text-center"><?= esc_attr( get_option('header_text') ); ?></h1>
 	
-	<div id="ra-contact-success-message">
+	<div id="ecf-success-message">
 		<?= $msg ?>
-	</div><!-- ra-contact-success-message -->	
+	</div><!-- ecf-success-message -->	
 	
 	<form action="<?= esc_url( $_SERVER['REQUEST_URI'] );?>" method="post" role="form">
 		
@@ -47,30 +46,30 @@ if (!empty($_POST)) {
 			
 			<!-- A concious decision to avoid closing tags on self-closing elements. I'm happy to use them if the house styleguide requires them, but my guide here is default simplcity -->
 			
-			<span class="ra-contact-required">*</span>
+			<span class="ecf-required">*</span>
 		</div>
 				
 		<div class="form-group"> <!-- email -->
 			<label class="control-label" for="email">Email</label>
-			<input type="email" class="form-control" id="email" name="email" type="text" value="<?= isset($data['email']) ? htmlspecialchars($data['email']) : '' ?>" placeholder="Your email address" required><span class="ra-contact-required">*</span>
+			<input type="email" class="form-control" id="email" name="email" type="text" value="<?= isset($data['email']) ? htmlspecialchars($data['email']) : '' ?>" placeholder="Your email address" required><span class="ecf-required">*</span>
 		</div>
 		
 		<div class="form-group"> <!-- telephone -->
 		<label class="control-label" for="telephone">Telephone</label>
 			<input class="form-control" id="telephone" name="telephone" type="tel" value="<?= isset($data['telephone']) ? htmlspecialchars($data['telephone']) : '' ?>" placeholder="Your telephone number">
-			<span class="ra-contact-not-required">*</span>
+			<span class="ecf-not-required">*</span>
 		</div>
 		
 		<div class="form-group"> <!-- enquiry -->
 		<label class="control-label" for="enquiry">Enquiry</label>
 			<textarea class="form-control" id="enquiry" name="enquiry" placeholder="Your enquiry" rows=5 required><?= isset($data['enquiry']) ? htmlspecialchars($data['enquiry']) : '' ?></textarea>
-			<span class="ra-contact-required">*</span>
+			<span class="ecf-required">*</span>
 		</div>
 		
 		<div class="form-group">
-			<button class="ra-contact-button btn btn-primary" name="submit" type="submit">Submit</button>
+			<button class="ecf-button btn btn-primary" name="submit" type="submit">Submit</button>
 		</div>
 	
 	</form>
 		
-</div><!-- ra-contact-container -->
+</div><!-- ecf-container -->
